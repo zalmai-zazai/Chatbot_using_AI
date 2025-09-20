@@ -15,14 +15,17 @@ function App() {
 
   const fetchData = async (userMessage: string, conversationId: string) => {
     try {
-      const response = await fetch("http://localhost:3000/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          prompt: userMessage,
-          conversationId,
-        }),
-      });
+      const response = await fetch(
+        "https://chatbot-using-ai-fjg6.onrender.com/api/chat",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            prompt: userMessage,
+            conversationId,
+          }),
+        }
+      );
       const data = await response.json();
       return data.message;
     } catch (error) {
